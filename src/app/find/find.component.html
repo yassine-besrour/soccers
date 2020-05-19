@@ -1,0 +1,53 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+    <h1 fxFlex> Find a Soccer Field</h1>
+    <div class="container" fxLayout>
+        <input fxFlex #find placeholder="Tap a Soccer's Name">
+        <button fxFlex mat-flat-button color="primary">Go</button>
+    </div>
+</div>
+<div class="container" fxLayout>
+    <div fxFlex=10%></div>
+    <div fxFlex>
+        <mat-card class="mat-elevation-z15" class="container" fxLayout="column">
+            <mat-card-header fxFlex>
+                <mat-card-title>
+                    <mat-form-field>
+                        <input matInput (keyup)="filter($event)" placeholder="Filter">
+                    </mat-form-field>
+                </mat-card-title>
+            </mat-card-header>
+
+
+            <mat-card-content fxFlex>
+                <div class="container" fxLayout="column">
+                    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" fxFlex>
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+                            <td mat-cell *matCellDef="let soccer">
+                                {{soccer.id }} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+                            <td mat-cell *matCellDef="let soccer">
+                                <a mat-button [routerLink]="['/soccerdetail',soccer.id]">{{soccer.name }}</a></td>
+                        </ng-container>
+                        <ng-container matColumnDef="city">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> City</th>
+                            <td mat-cell *matCellDef="let soccer"> {{soccer.city }}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="address">
+                            <th mat-header-cell *matHeaderCellDef> Address</th>
+                            <td mat-cell *matCellDef="let soccer"> {{soccer.address }}</td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedCol"></tr>
+                        <tr mat-row *matRowDef="let row; columns:displayedCol;">
+                        </tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[3, 5]"></mat-paginator>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex=10%></div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container" fxLayout>
+    <div fxFlex="20%"></div>
+    <div class="mat-elevation-z16">
+        <mat-card class="container" fxLayout="column" fxLayoutAlign="center start">
+            <mat-card-header fxFlex>
+                <mat-card-title>
+                    {{soccer.name}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{soccer.city}}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <div class="container" fxLayout>
+                <img fxFlex="100%" [src]="imagePath" class="card-img" alt="Photo of Maracaba Soccer">
+            </div>
+            <mat-card-content fxFlex>
+                <p>
+                    {{soccer.description}}
+                </p>
+                <address>{{soccer.address}}</address>
+            </mat-card-content>
+            <mat-card-actions fxFlex>
+                <button mat-button>Like</button>
+                <button mat-button>Share</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div fxFlex="20%"></div>
+</div>
+
+<div class="container" fxLayout>
+    <button fxFlex mat-raised-button color="primary" (click)="findPage()">Previous</button>
+    <span fxFlex=80%></span>
+    <button fxFlex mat-raised-button color="primary" routerLink="/cart">Book</button>
+</div>
